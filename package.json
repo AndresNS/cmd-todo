@@ -10,5 +10,8 @@
     "todo"
   ],
   "author": "Andres N.",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^16.2.0"
+  }
 }
