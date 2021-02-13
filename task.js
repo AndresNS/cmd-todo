@@ -57,9 +57,11 @@ const loadTasks = () => {
   }
 };
 
-function Task(title, description) {
-  this.Ditle = title;
-  this.Description = description;
+class Task {
+  constructor(title, description) {
+    this.Title = title;
+    this.Description = description;
+  }
 }
 
 module.exports = {
