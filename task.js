@@ -19,6 +19,11 @@ const remove = (taskIndex) => {
 const list = () => {
   const tasks = loadTasks();
 
+  if (tasks.length === 0) {
+    console.log("The list is empty.");
+    return;
+  }
+
   tasks.map((task, id) =>
     console.log(
       `Id: ${id + 1}, Title: ${task.title}`,
