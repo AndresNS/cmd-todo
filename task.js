@@ -1,5 +1,6 @@
 "use strict";
 const fs = require("fs");
+// const chalk = require("chalk");
 
 const add = ({ title, description }) => {
   const tasks = loadTasks();
@@ -20,16 +21,21 @@ const list = () => {
   const tasks = loadTasks();
 
   if (tasks.length === 0) {
-    console.log("The list is empty.");
+    console.log("* The list is empty. *");
     return;
   }
 
-  tasks.map((task, id) =>
-    console.log(
-      `Id: ${id + 1}, Title: ${task.title}`,
-      task.description ? `, Description: ${task.description}` : ""
-    )
+  const tasksTable = {};
+
+  tasks.map(
+    (task, id) =>
+      (tasksTable[id + 1] = new Task(
+        task.title,
+        task.description ? task.description : "---"
+      ))
   );
+
+  console.table(tasksTable);
 };
 
 const clear = () => {
@@ -50,6 +56,11 @@ const loadTasks = () => {
     return [];
   }
 };
+
+function Task(title, description) {
+  this.Ditle = title;
+  this.Description = description;
+}
 
 module.exports = {
   add,
