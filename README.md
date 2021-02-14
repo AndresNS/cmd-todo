@@ -1,6 +1,6 @@
 ## Installation
 
-Add the following alias and function to your `.bashrc`.
+1. Add the following alias and function to your `.bashrc`.
 
 ```sh
 alias todo='todo'
@@ -26,6 +26,8 @@ todo () {
   fi
 }
 ```
+
+2. The application uses a JSON file to store the tasks list, so you need to specify its path in the config file. In order to do so, rename the file `config.example.js` to `config.js` and change the value of the variable `TASKS_LIST_FILE` to an absolute path of your choice.
 
 ## Usage
 
