@@ -6,8 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AndresNS/cmd-todo"
+  },
   "keywords": [
-    "todo"
+    "todo",
+    "todo list",
+    "command line todo list"
   ],
   "author": "Andres N.",
   "license": "ISC",
