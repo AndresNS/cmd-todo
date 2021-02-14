@@ -10,15 +10,25 @@ const add = ({ title, description }) => {
 };
 
 const remove = (taskIndex) => {
-  const tasks = loadTasks();
-  const updatedTasks = tasks.filter((task, id) => taskIndex - 1 !== id);
+  try {
+    const tasks = loadTasks();
+    const updatedTasks = tasks.filter((task, id) => taskIndex - 1 !== id);
 
-  saveTasks(updatedTasks);
-  console.log(
-    chalk.black.bgGreen(
-      `Task '${tasks[taskIndex - 1].title}' removed from the list.`
-    )
-  );
+    saveTasks(updatedTasks);
+    console.log(
+      chalk.black.bgGreen(
+        `Task '${tasks[taskIndex - 1].title}' removed from the list.`
+      )
+    );
+  } catch (e) {
+    console.log(
+      chalk.red(
+        "There was an error while trying to delete the task. Please make sure the index is correct."
+      )
+    );
+    console.log("");
+    help();
+  }
 };
 
 const list = () => {
@@ -63,18 +73,8 @@ const help = () => {
 
 const notFound = () => {
   console.log(chalk.red("Invalid command."));
-  console.log(chalk.underline(""));
-  console.log(chalk.underline("Commands:"));
-  console.log(
-    "  todo a [task_title] [task_description]    Add a task to the list."
-  );
-  console.log(
-    "  todo d [task_index]                       Delete a task by index."
-  );
-  console.log("  todo l                                    List all tasks.");
-  console.log(
-    "  todo c                                    Delete all tasks from the list."
-  );
+  console.log("");
+  help();
 };
 
 const saveTasks = (tasks) => {
