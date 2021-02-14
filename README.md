@@ -8,7 +8,7 @@ alias todo='todo'
 todo () {
   if [ "$1" == "-a" ]
   then
-    node ./relative/path/to/app.js add --title $2 --description $3
+    node ./relative/path/to/app.js add --title "$2" --description "$3"
   elif [ "$1" == "-d" ]
   then
     node ./relative/path/to/app.js remove --id $2
