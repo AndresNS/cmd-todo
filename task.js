@@ -47,6 +47,36 @@ const clear = () => {
   console.log(chalk.black.bgGreen("All tasks have been deleted."));
 };
 
+const help = () => {
+  console.log(chalk.underline("Commands:"));
+  console.log(
+    "  todo a [task_title] [task_description]    Add a task to the list."
+  );
+  console.log(
+    "  todo d [task_index]                       Delete a task by index."
+  );
+  console.log("  todo l                                    List all tasks.");
+  console.log(
+    "  todo c                                    Delete all tasks from the list."
+  );
+};
+
+const notFound = () => {
+  console.log(chalk.red("Invalid command."));
+  console.log(chalk.underline(""));
+  console.log(chalk.underline("Commands:"));
+  console.log(
+    "  todo a [task_title] [task_description]    Add a task to the list."
+  );
+  console.log(
+    "  todo d [task_index]                       Delete a task by index."
+  );
+  console.log("  todo l                                    List all tasks.");
+  console.log(
+    "  todo c                                    Delete all tasks from the list."
+  );
+};
+
 const saveTasks = (tasks) => {
   const tasksJSON = JSON.stringify(tasks);
   fs.writeFileSync("./tasks.json", tasksJSON);
@@ -73,4 +103,6 @@ module.exports = {
   remove,
   list,
   clear,
+  help,
+  notFound,
 };

@@ -28,14 +28,14 @@ yargs.command({
   command: "remove",
   describe: "Remove a task from the list.",
   builder: {
-    id: {
-      describe: "Task ID",
+    index: {
+      describe: "Task Index",
       demandOption: true,
       type: "number",
     },
   },
   handler(argv) {
-    task.remove(argv.id);
+    task.remove(argv.index);
   },
 });
 
@@ -54,6 +54,24 @@ yargs.command({
   describe: "Removes all tasks from the list.",
   handler(argv) {
     task.clear();
+  },
+});
+
+// Show help
+yargs.command({
+  command: "hlp",
+  describe: "Show help.",
+  handler(argv) {
+    task.help();
+  },
+});
+
+// Invalid command
+yargs.command({
+  command: "404",
+  describe: "Invalid command.",
+  handler(argv) {
+    task.notFound();
   },
 });
 

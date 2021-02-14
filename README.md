@@ -6,18 +6,23 @@ Add the following alias and function to your `.bashrc`.
 alias todo='todo'
 
 todo () {
-  if [ "$1" == "-a" ]
+  if [ "$1" == "a" ]
   then
-    node ./relative/path/to/app.js add --title "$2" --description "$3"
-  elif [ "$1" == "-d" ]
+    node ../Desarrollo/cmd-todo/app.js add --title "$2" --description "$3"
+  elif [ "$1" == "d" ]
   then
-    node ./relative/path/to/app.js remove --id $2
-  elif [ "$1" == "-l" ]
+    node ../Desarrollo/cmd-todo/app.js remove --index $2
+  elif [ "$1" == "l" ]
   then
-    node ./relative/path/to/app.js list
-  elif [ "$1" == "-c" ]
+    node ../Desarrollo/cmd-todo/app.js list
+  elif [ "$1" == "c" ]
   then
-    node ./relative/path/to/app.js clear
+    node ../Desarrollo/cmd-todo/app.js clear
+  elif [ "$1" == "h" ]
+  then
+    node ../Desarrollo/cmd-todo/app.js hlp
+  else
+    node ../Desarrollo/cmd-todo/app.js 404
   fi
 }
 ```
@@ -29,15 +34,15 @@ todo () {
 Add a task to the list. If the task title or description have more than one word it must be typed in quotes.
 
 ```sh
-todo -a {task_title} {task_description}
+todo a [task_title] [task_description]
 ```
 
 ### Delete task
 
-Delete a task from the list by Id.
+Delete a task from the list by Index.
 
 ```sh
-todo -d {task_id}
+todo d [task_index]
 ```
 
 ### List tasks
@@ -45,7 +50,7 @@ todo -d {task_id}
 List all tasks saved.
 
 ```sh
-todo -l
+todo l
 ```
 
 ### Clear tasks
@@ -53,5 +58,13 @@ todo -l
 Delete all tasks from the list.
 
 ```sh
-todo -c
+todo c
+```
+
+### Show help
+
+Show all commands available.
+
+```sh
+todo h
 ```
