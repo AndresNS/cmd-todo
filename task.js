@@ -25,7 +25,7 @@ const list = () => {
   const tasks = loadTasks();
 
   if (tasks.length === 0) {
-    console.log(chalk.black.bgYellow("* The list is empty. *"));
+    console.log(chalk.black.bgYellow("The list is empty."));
     return;
   }
 
