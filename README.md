@@ -8,21 +8,21 @@ alias todo='todo'
 todo () {
   if [ "$1" == "a" ]
   then
-    node ../Desarrollo/cmd-todo/app.js add --title "$2" --description "$3"
+    node /absolute/path/to/app.js add --title "$2" --description "$3"
   elif [ "$1" == "d" ]
   then
-    node ../Desarrollo/cmd-todo/app.js remove --index $2
+    node /absolute/path/to/app.js remove --index $2
   elif [ "$1" == "l" ]
   then
-    node ../Desarrollo/cmd-todo/app.js list
+    node /absolute/path/to/app.js list
   elif [ "$1" == "c" ]
   then
-    node ../Desarrollo/cmd-todo/app.js clear
+    node /absolute/path/to/app.js clear
   elif [ "$1" == "h" ]
   then
-    node ../Desarrollo/cmd-todo/app.js hlp
+    node /absolute/path/to/app.js hlp
   else
-    node ../Desarrollo/cmd-todo/app.js 404
+    node /absolute/path/to/app.js 404
   fi
 }
 ```
