@@ -1,12 +1,14 @@
 "use strict";
 const fs = require("fs");
 const chalk = require("chalk");
+const config = require("./config");
 
 const add = ({ title, description }) => {
   const tasks = loadTasks();
   tasks.push({ title, description });
   saveTasks(tasks);
   console.log(chalk.black.bgGreen(`Task '${title}' added to the list.`));
+  list();
 };
 
 const remove = (taskIndex) => {
@@ -20,6 +22,7 @@ const remove = (taskIndex) => {
         `Task '${tasks[taskIndex - 1].title}' removed from the list.`
       )
     );
+    list();
   } catch (e) {
     console.log(
       chalk.red(
@@ -79,12 +82,12 @@ const notFound = () => {
 
 const saveTasks = (tasks) => {
   const tasksJSON = JSON.stringify(tasks);
-  fs.writeFileSync("./tasks.json", tasksJSON);
+  fs.writeFileSync(config.TASKS_LIST_FILE, tasksJSON);
 };
 
 const loadTasks = () => {
   try {
-    const tasks = fs.readFileSync("./tasks.json");
+    const tasks = fs.readFileSync(config.TASKS_LIST_FILE);
     return JSON.parse(tasks.toString());
   } catch (e) {
     return [];
