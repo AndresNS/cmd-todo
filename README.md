@@ -1,6 +1,6 @@
 ## Installation
 
-1. Add the following alias and function to your `.bashrc`.
+1. Add the following alias and function to your `.bashrc` file.
 
 ```sh
 alias todo='todo'
